@@ -1,2 +1,4 @@
 # Echipa-404-Robotica-
-Echipa 404. Pentru laboratorul de Robotica.
+
+rosrun topics_quiz simple_topic_publisher.py
+rosrun topics_quiz simple_topic_subscriber.py
