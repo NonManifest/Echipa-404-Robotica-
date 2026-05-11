@@ -1,0 +1,13 @@
+<launch>
+
+    <node pkg="services_quiz"
+          type="service_quiz_server.py"
+          name="service_quiz_server"
+          output="screen"/>
+
+    <node pkg="services_quiz"
+          type="service_quiz_client.py"
+          name="service_quiz_client"
+          output="screen"
+          launch-prefix="bash -c 'sleep 2; $0 $@'"/>
+</launch>
