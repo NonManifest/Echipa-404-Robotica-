@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>jackal_pkg</name>
+  <name>services_quiz</name>
   <version>0.0.0</version>
   <description>The jackal_pkg package</description>
 
