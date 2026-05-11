@@ -1,4 +1,4 @@
-float 64 side
+float64 side
 int32 repetitions
 ---
 bool success 
