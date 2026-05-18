@@ -21,7 +21,7 @@ class DroneCommandServer404(object):
 
         # Creare action server
         self._as = actionlib.SimpleActionServer(
-            'drone_command_server_404',       # numele serverului - Echipa 404
+            'drone_command_server_404',      
             DroneCommand404Action,
             execute_cb=self.goal_callback_404,
             auto_start=False
@@ -31,7 +31,7 @@ class DroneCommandServer404(object):
 
     def goal_callback_404(self, goal):
 
-        rate = rospy.Rate(1)   # 1 Hz -> feedback o data pe secunda
+        rate = rospy.Rate(1)  
         success = True
 
         command = goal.command.strip().upper()
@@ -42,15 +42,12 @@ class DroneCommandServer404(object):
             rospy.loginfo('Drona, in teorie, decoleaza')
             self._pub_takeoff.publish(Empty())
 
-            # Trimite feedback o data pe secunda pana la preempt sau finalizare
-            # Drona ramane in zbor pana cand primeste comanda LAND
-            # Aici asteptam ~10 secunde trimitzand feedback, apoi marcam ca succes
-            # (In practica, serverul ar astepta o a doua comanda LAND)
+       
             start_time = rospy.Time.now()
-            hover_duration = 10  # secunde de hover - poate fi modificat
+            hover_duration = 10  
 
             while not rospy.is_shutdown():
-                # Verifica daca goal-ul a fost anulat (preempted)
+         
                 if self._as.is_preempt_requested():
                     rospy.loginfo('Goal TAKEOFF')
                     self._as.set_preempted()
@@ -95,13 +92,12 @@ class DroneCommandServer404(object):
                 rate.sleep()
 
         else:
-            rospy.logwarn('[Echipa-404] Comanda necunoscuta: %s. Folositi TAKEOFF sau LAND.', command)
+            rospy.logwarn('Comanda necunoscuta: %s. Folositi TAKEOFF sau LAND.', command)
             success = False
 
         if success:
-            # Result gol conform cerintei
             self._as.set_succeeded(self._result)
-            rospy.loginfo('[Echipa-404] Actiunea "%s" finalizata cu succes!', command)
+            rospy.loginfo('Actiunea "%s" finalizata cu succes', command)
 
 
 if __name__ == '__main__':
