@@ -1,0 +1,8 @@
+# goal
+string command   # "TAKEOFF" or "LAND"
+---
+# result
+# empty - no result returned
+---
+# feedback
+string current_action   # what action is currently taking place

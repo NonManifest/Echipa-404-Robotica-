@@ -3,8 +3,7 @@ import rospy                              			# Import the Python library for ROS
 from std_msgs.msg import Int32             		# Import the Int32 message from the std_msgs package
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
-import time
- 
+import time 
 def trimite(v_lin, v_ang):
     """
     Publică viteza liniară și unghiulară pe topicul /cmd_vel

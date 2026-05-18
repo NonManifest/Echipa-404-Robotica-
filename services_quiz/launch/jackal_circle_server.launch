@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="jackal_pkg"
+          type="jackal_circle_server.py"
+          name="jackal_circle_server"
+          output="screen"/>
+</launch>
