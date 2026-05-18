@@ -1,4 +1,4 @@
-float64 side
+float64 radius
 int32 repetitions
 ---
-bool success 
+bool success
