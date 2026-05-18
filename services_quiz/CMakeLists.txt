@@ -57,7 +57,11 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate services in the 'srv' folder
 add_service_files(
   FILES
+<<<<<<< HEAD
   JackalCircle.srv
+=======
+  quiz_service.srv
+>>>>>>> 29c7cda7ac55af796ffad3043b8c42cfb5c9d4a2
 )
 
 ## Generate actions in the 'action' folder

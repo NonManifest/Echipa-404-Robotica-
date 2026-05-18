@@ -27,22 +27,19 @@ class DroneCommandServer404(object):
             auto_start=False
         )
         self._as.start()
-        rospy.loginfo('[Echipa-404] DroneCommandServer404 pornit si gata de comenzi!')
+        rospy.loginfo('[Echipa-404] DroneCommandServer404 pornit si gata de comenzi')
 
     def goal_callback_404(self, goal):
-        """
-        Callback apelat la primirea unui goal nou.
-        Accepta: 'TAKEOFF' sau 'LAND'
-        """
+
         rate = rospy.Rate(1)   # 1 Hz -> feedback o data pe secunda
         success = True
 
         command = goal.command.strip().upper()
-        rospy.loginfo('[Echipa-404] Comanda primita: %s', command)
+        rospy.loginfo('Comanda primita', command)
 
         if command == 'TAKEOFF':
             # Publica comanda de decolare
-            rospy.loginfo('[Echipa-404] Drona decoleaza...')
+            rospy.loginfo('Drona, in teorie, decoleaza')
             self._pub_takeoff.publish(Empty())
 
             # Trimite feedback o data pe secunda pana la preempt sau finalizare
@@ -55,15 +52,15 @@ class DroneCommandServer404(object):
             while not rospy.is_shutdown():
                 # Verifica daca goal-ul a fost anulat (preempted)
                 if self._as.is_preempt_requested():
-                    rospy.loginfo('[Echipa-404] Goal TAKEOFF preemptat!')
+                    rospy.loginfo('Goal TAKEOFF')
                     self._as.set_preempted()
                     success = False
                     break
 
                 # Feedback: actiunea curenta
-                self._feedback.current_action = 'TAKEOFF - Drona se afla in zbor'
+                self._feedback.current_action = 'TAKEOFF, drona zboara'
                 self._as.publish_feedback(self._feedback)
-                rospy.loginfo('[Echipa-404] Feedback: %s', self._feedback.current_action)
+                rospy.loginfo('Feedback: %s', self._feedback.current_action)
 
                 elapsed = (rospy.Time.now() - start_time).to_sec()
                 if elapsed >= hover_duration:
@@ -73,7 +70,7 @@ class DroneCommandServer404(object):
 
         elif command == 'LAND':
             # Publica comanda de aterizare
-            rospy.loginfo('[Echipa-404] Drona aterizeaza...')
+            rospy.loginfo('[Echipa-404] Drona aterizeaza')
             self._pub_land.publish(Empty())
 
             # Trimite feedback o data pe secunda timp de ~3 secunde de aterizare
