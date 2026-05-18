@@ -5,4 +5,4 @@ string command   # "TAKEOFF" or "LAND"
 # empty - no result returned
 ---
 # feedback
-string current_action   # what action is currently taking place
+string current_action   # actiunea

@@ -1,5 +1,4 @@
 <launch>
-    <!-- Echipa 404 - Drone Command Action Server -->
     <node pkg="actions_quiz"
           type="drone_command_server_404.py"
           name="drone_command_node_404"
